@@ -15,15 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from core import views
+from core import views as core_views
 
 urlpatterns = [
-    # Sem nada na URL, será a URL base
-    url(r'^$', views.index, name='index'),
-    # Demais URLs do sistema
-    url(r'^contato/$', views.contact, name='contact'),
-    url(r'^produto/$', views.product, name='product'),
-    url(r'^produtos/$', views.product_list, name='product_list'),
-    # URL do admin
+    url(r'^$', core_views.index, name='index'),
+    url(r'^contato/$', core_views.contact, name='contact'),
+    url(r'^produto/$', core_views.product, name='product'),
+    url(r'^produtos/$', core_views.product_list, name='product_list'),
     url(r'^admin/', admin.site.urls),
 ]

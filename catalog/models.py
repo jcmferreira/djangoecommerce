@@ -16,6 +16,9 @@ class Category(models.Model):
         verbose_name_plural = 'Categorias'
         ordering = ['name']
 
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     # Campos comuns
@@ -33,3 +36,6 @@ class Product(models.Model):
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'
         ordering = ['name']
+
+    def __str__(self):
+        return self.name
