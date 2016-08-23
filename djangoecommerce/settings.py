@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # JC: Início das apps de djangoecommerce
     'core',
+    'catalog',
 ]
 
 MIDDLEWARE = [
