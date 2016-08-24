@@ -26,4 +26,5 @@ traitlets==4.2.2
 virtualenv==15.0.2
 virtualenvwrapper-win==1.2.1
 wcwidth==0.1.7
+whitenoise==3.2.1
 win-unicode-console==0.5
