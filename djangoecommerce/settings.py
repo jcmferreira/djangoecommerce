@@ -148,6 +148,12 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, 'staticfiles')
 # ]
 
+# Para o controle de envio de emails
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = 'admin@djangoecommerce.com.br'
+
 # Configurações para o heroku
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
