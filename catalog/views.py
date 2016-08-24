@@ -19,3 +19,12 @@ def category(request, slug):
         'product_list': Product.objects.filter(category=category),
     }
     return render(request, template_name, context)
+
+
+def product(request, slug):
+    product = Product.objects.get(slug=slug)
+    template_name = 'catalog/product.html'
+    context = {
+        'product': product
+    }
+    return render(request, template_name, context)

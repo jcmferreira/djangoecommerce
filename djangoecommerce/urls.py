@@ -21,7 +21,7 @@ from core import views as core_views
 urlpatterns = [
     url(r'^$', core_views.index, name='index'),
     url(r'^contato/$', core_views.contact, name='contact'),
-    url(r'^produto/$', core_views.product, name='product'),
-    url(r'^produtos/', include('catalog.urls', namespace='catalog')),
+    # url(r'^produto/$', core_views.product, name='product'),
+    url(r'^catalogo/', include('catalog.urls', namespace='catalog')),
     url(r'^admin/', admin.site.urls),
 ]

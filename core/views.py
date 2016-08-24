@@ -11,8 +11,3 @@ def index(request):
 def contact(request):
     template_name = 'contact.html'
     return render(request, template_name)
-
-
-def product(request):
-    template_name = 'product.html'
-    return render(request, template_name)
