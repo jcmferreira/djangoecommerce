@@ -46,7 +46,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
-    # Middleware do whitenoise para o deploy real da app
+    # JC: Middleware do whitenoise para o deploy real da app
+    # Esse middleware é usado para que os arquivos estáticos possam ser servidos
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
