@@ -1,5 +1,5 @@
 from django.shortcuts import render
-# from django.http import HttpResponse
+from .forms import ContactForm
 
 
 # View principal do sistema
@@ -10,4 +10,8 @@ def index(request):
 
 def contact(request):
     template_name = 'contact.html'
-    return render(request, template_name)
+    form = ContactForm(request.POST or None)
+    context = {
+        'form': form
+    }
+    return render(request, template_name, context)

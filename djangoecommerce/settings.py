@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # JC: Início das apps de djangoecommerce
+    # -- LIBS
+    # widget-tweaks = Para customização avançada dos formulários renderizados
+    'widget_tweaks',
+    # -- APPS
     'core',
     'catalog',
 ]
