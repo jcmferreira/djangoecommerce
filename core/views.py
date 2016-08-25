@@ -1,7 +1,14 @@
 from django.shortcuts import render
-from .forms import ContactForm
+from django.views.generic import TemplateView, CreateView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model
+from django.core.urlresolvers import reverse_lazy
 # Views padrões do Django
-from django.views.generic import View, TemplateView
+from .forms import ContactForm
+
+
+# Definindo a classe User padrão
+User = get_user_model()
 
 
 # Opção 1
@@ -36,9 +43,6 @@ from django.views.generic import View, TemplateView
 class IndexView(TemplateView):
     template_name = 'index.html'
 
-# Como a classe IndexView passou a herdar de View, a chamada precisa usar o método as_view()
-index = IndexView.as_view()
-
 
 def contact(request):
     template_name = 'contact.html'
@@ -56,3 +60,16 @@ def contact(request):
         'success': success
     }
     return render(request, template_name, context)
+
+
+class RegisterView(CreateView):
+    form_class = UserCreationForm
+    template_name = 'register.html'
+    model = User
+    # URL para redirecionamento após o sucesso no regisrto
+    success_url = reverse_lazy('index')
+
+
+# Criando os objetos views para as URLs utilizarem
+index = IndexView.as_view()
+register = RegisterView.as_view()
