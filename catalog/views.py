@@ -12,6 +12,8 @@ class ProductListView(generic.ListView):
     # Aqui, a variáve de listagem do contexto é definida com context_object_name
     # Se não for informado, será o nome da classe + _list = product_list
     context_object_name = 'products'
+    # Fazendo paginação da view
+    paginate_by = 3
 
 
 # def category(request, slug):
@@ -25,6 +27,8 @@ class ProductListView(generic.ListView):
 class CategoryListView(generic.ListView):
     template_name = 'catalog/category.html'
     context_object_name = 'product_list'
+    # Fazendo paginação da view
+    paginate_by = 3
 
     def get_queryset(self):
         # Esta seria a primeira forma de acessar os produtos da categoria que veio na URL
