@@ -164,6 +164,11 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
+# Configurações de usuário auth
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_URL = ''
+
 # Sobrescrevendo configurações definidas em arquivos locais específicos (produção e desenvolvimento)
 try:
     from .local_settings import *
