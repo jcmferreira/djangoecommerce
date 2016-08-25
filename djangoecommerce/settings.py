@@ -22,7 +22,10 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'mu1hbq=$o@(qt=_skh#-@n*l4vbaz-1s0g6bm0wfd35ogv!yqq'
+# mu1hbq=$o@(qt=_skh#-@n*l4vbaz-1s0g6bm0wfd35ogv!yqq
+# JC: Recuperando a chave de variáveis de ambiente
+# No caso, os.getenv, o primeiro parametro é o nome da variável e o segundo, um valor default
+SECRET_KEY = os.getenv('SECRET_KEY', '123')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
