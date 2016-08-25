@@ -28,7 +28,16 @@ class ProductListTestCase(TestCase):
     def test_context(self):
         response = self.client.get(self.url)
         # Testando se a variável product_list existe no contexto
-        self.assertTrue('product_list' in response.context)
+        self.assertTrue('products' in response.context)
         # Testando existem 10 produtos, assim como define a criação com o mommy.make
-        product_list = response.context['product_list']
-        self.assertEqual(product_list.count(), 10)
+        product_list = response.context['products']
+        self.assertEqual(product_list.count(), 3)
+        # Como existe a paginação, ela tbm deve ser testada
+        # No caso, como existem três produtos por página, para 10 produtos, serão 4 páginas
+        paginator = response.context['paginator']
+        self.assertEqual(paginator.num_pages, 4)
+
+    # Validando página inválida
+    def test_page_not_found(self):
+        response = self.client.get('{}?page=5'.format(self.url))
+        self.assertEqual(response.status_code, 404)
