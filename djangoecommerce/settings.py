@@ -170,6 +170,14 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_URL = ''
 AUTH_USER_MODEL = 'accounts.User'
+# A tupla de backends permite que o django tente fazer a autenticação seguindo a ordem abaixo.
+# Ele irá tentar autenticar um após o outro até que um User seja retornado.
+# Isso é util para que possamos criar backends diferentes de autenticação, como por exemplo: login por facebook,
+# login por Google, login por linkedin e por fim, login pela aplicação normal
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.ModelBackend',
+)
 
 # Sobrescrevendo configurações definidas em arquivos locais específicos (produção e desenvolvimento)
 try:
