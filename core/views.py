@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, CreateView
-from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import TemplateView
+# from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse_lazy
+# from django.core.urlresolvers import reverse_lazy
 # Views padrões do Django
 from .forms import ContactForm
 
@@ -62,14 +62,5 @@ def contact(request):
     return render(request, template_name, context)
 
 
-class RegisterView(CreateView):
-    form_class = UserCreationForm
-    template_name = 'register.html'
-    model = User
-    # URL para redirecionamento após o sucesso no regisrto
-    success_url = reverse_lazy('index')
-
-
 # Criando os objetos views para as URLs utilizarem
 index = IndexView.as_view()
-register = RegisterView.as_view()
