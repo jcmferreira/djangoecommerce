@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     # -- APPS
     'core',
+    'accounts',
     'catalog',
 ]
 
@@ -168,6 +169,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_URL = ''
+AUTH_USER_MODEL = 'accounts.User'
 
 # Sobrescrevendo configurações definidas em arquivos locais específicos (produção e desenvolvimento)
 try:
