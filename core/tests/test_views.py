@@ -107,26 +107,6 @@ class LoginViewTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'login.html')
         # Validação da senha errada. Esta é a mensagem exata que é gerada para senhas erradas
-        error_msg = ('Por favor, entre com um usuário  e senha corretos.'
+        error_msg = ('Por favor, entre com um Apelido / Usuário  e senha corretos.'
                      ' Note que ambos os campos diferenciam maiúsculas e minúsculas.')
         self.assertFormError(response, 'form', None, error_msg)
-
-
-class RegisterViewTestCase(TestCase):
-    # O método setUp é executado sempre que um def é iniciado
-    def setUp(self):
-        self.client = Client()
-        self.register_url = reverse('register')
-
-    def test_register_ok(self):
-        data = {
-            'username': 'juliocesar',
-            'password1': 'teste123456xeba',
-            'password2': 'teste123456xeba'
-        }
-        index_url = reverse('index')
-        response = self.client.post(self.register_url, data)
-        # Testando se foi redirecionado para a página inicial
-        self.assertRedirects(response, index_url)
-        # Validando se o usuário existe
-        self.assertEqual(User.objects.count(), 1)
