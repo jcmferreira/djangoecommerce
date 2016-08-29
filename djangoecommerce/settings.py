@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 import dj_database_url
+# Para a configuração das messages do Django
+from django.contrib.messages import constants as messages_constants
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -49,6 +51,7 @@ INSTALLED_APPS = [
     'core',
     'accounts',
     'catalog',
+    'checkout',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -178,6 +181,18 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'accounts.backends.ModelBackend',
 )
+
+# Configurações para definir a classe específica para cada tudo de menssage do Django, compatibilizando o render
+# com o padrão do bootstrap (ou de qualquer outro)
+MESSAGE_TAGS = {
+    messages_constants.DEBUG: 'debug',
+    messages_constants.INFO: 'info',
+    messages_constants.SUCCESS: 'success',
+    messages_constants.WARNING: 'warning',
+    # Para o bootstrap, o error é danger
+    # messages_constants.ERROR: 'error',
+    messages_constants.ERROR: 'danger',
+}
 
 # Sobrescrevendo configurações definidas em arquivos locais específicos (produção e desenvolvimento)
 try:

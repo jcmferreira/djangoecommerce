@@ -7,9 +7,10 @@ Minha conta
 {% block container %}
 
     <ol class="breadcrumb">
-        <li><a href="#">Início</a></li>
-        <li class="active">Minha Conta</li>
-        {% block user_breadcrumb %}{% endblock user_breadcrumb %}
+        <li><a href="{% url 'index' %}">Início</a></li>
+        {% block user_breadcrumb %}
+            <li class="active">Minha Conta</li>
+        {% endblock user_breadcrumb %}
     </ol>
     <div class="row">
         <div class="col-md-4">
