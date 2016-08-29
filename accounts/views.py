@@ -51,6 +51,12 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
         kwargs['user'] = self.request.user
         return kwargs
 
+    # Para fazer valer o formulário de login, os dados precisam ser salvos (visto no teste de login)
+    # Nesse caso, é sobrescrita a chamada de form_valid para salvar os dados do formulário antes de retorná-lo
+    def form_valid(self, form):
+        form.save()
+        return super(UpdatePasswordView, self).form_valid(form)
+
 
 # Definição das variáveis para as views criadas
 index = IndexView.as_view()
