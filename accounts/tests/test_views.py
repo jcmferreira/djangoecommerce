@@ -90,6 +90,7 @@ class UpdatePasswordTestCase(TestCase):
         self.user.set_password('teste123xeba')
         self.user.save()
 
+    # Método executado sempre que um def é finalizado
     def tearDown(self):
         self.user.delete()
 
