@@ -41,3 +41,15 @@ class CartItem(models.Model):
 
     def __str__(self):
         return '{} [{}]'.format(self.product, self.quantity)
+
+
+# Esta definição servirá para remover itens de carrinho que estejam com a quantidade zerada = 0 através de signals
+def post_save_cart_item(instance, **kwargs):
+    if instance.quantity < 1:
+        instance.delete()
+
+# O sinal para o django atualizar o carrinho através do def post_save_cart_item
+# A definição do parâmetro sender=CartItem serve para dizer ao django que a função somente deverá ser disparada
+# se quem chamou foi uma instância de CartItem
+# dispatch_uid serve para garantir que a função será chamada uma única vez. É um registro dela. Um nome único
+models.signals.post_save.connect(post_save_cart_item, sender=CartItem, dispatch_uid='post_save_cart_item')
