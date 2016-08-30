@@ -1,0 +1,95 @@
+.EE
+======================================================================
+ERROR: test_add_complex_cartitem_ok (checkout.tests.test_views.CreateCartItemTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Pessoal\PyProjects\ecommerce\djangoecommerce\checkout\tests\test_views.py", line 26, in test_add_complex_cartitem_ok
+    response = self.client.get(self.url)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\test\client.py", line 529, in get
+    **extra)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\test\client.py", line 333, in get
+    return self.generic('GET', path, secure=secure, **r)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\test\client.py", line 409, in generic
+    return self.request(**r)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\test\client.py", line 494, in request
+    six.reraise(*exc_info)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\utils\six.py", line 686, in reraise
+    raise value
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\core\handlers\base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\views\generic\base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\views\generic\base.py", line 190, in get
+    url = self.get_redirect_url(*args, **kwargs)
+  File "C:\Pessoal\PyProjects\ecommerce\djangoecommerce\checkout\views.py", line 23, in get_redirect_url
+    cart_item, created = CartItem.objects.add_item(self.request.session.session_key, product)
+  File "C:\Pessoal\PyProjects\ecommerce\djangoecommerce\checkout\models.py", line 18, in add_item
+    cart_item = CartItem.objects.create(cart_key=cart_key, product=product, price=product.price)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\query.py", line 399, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\base.py", line 796, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\base.py", line 824, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\base.py", line 908, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\base.py", line 947, in _do_insert
+    using=using, raw=raw)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\query.py", line 1043, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\sql\compiler.py", line 1053, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\sql\compiler.py", line 1006, in as_sql
+    for obj in self.query.objs
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\sql\compiler.py", line 1006, in <listcomp>
+    for obj in self.query.objs
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\sql\compiler.py", line 1005, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\sql\compiler.py", line 945, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\fields\__init__.py", line 1583, in get_db_prep_save
+    return connection.ops.adapt_decimalfield_value(self.to_python(value), self.max_digits, self.decimal_places)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\backends\base\operations.py", line 495, in adapt_decimalfield_value
+    return utils.format_number(value, max_digits, decimal_places)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\backends\utils.py", line 204, in format_number
+    value = value.quantize(decimal.Decimal(".1") ** decimal_places, context=context)
+decimal.InvalidOperation: [<class 'decimal.InvalidOperation'>]
+
+======================================================================
+ERROR: test_add_complex_cartitem_ok (checkout.tests.test_views.CreateCartItemTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Pessoal\PyProjects\ecommerce\djangoecommerce\checkout\tests\test_views.py", line 15, in tearDown
+    self.product.delete()
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\base.py", line 958, in delete
+    return collector.delete()
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\deletion.py", line 284, in delete
+    count = qs._raw_delete(using=self.using)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\query.py", line 621, in _raw_delete
+    return sql.DeleteQuery(self.model).delete_qs(self, using)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\sql\subqueries.py", line 81, in delete_qs
+    cursor = self.get_compiler(using).execute_sql(CURSOR)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\models\sql\compiler.py", line 835, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\backends\utils.py", line 59, in execute
+    self.db.validate_no_broken_transaction()
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\django\db\backends\base\base.py", line 428, in validate_no_broken_transaction
+    "An error occurred in the current transaction. You can't "
+django.db.transaction.TransactionManagementError: An error occurred in the current transaction. You can't execute queries until the end of the 'atomic' block.
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.089s
+
+FAILED (errors=2)
