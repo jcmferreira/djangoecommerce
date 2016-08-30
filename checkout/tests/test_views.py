@@ -1,5 +1,6 @@
 from django.test import TestCase, Client
 from django.core.urlresolvers import reverse
+from django.conf import settings
 from model_mommy import mommy
 from checkout.models import CartItem
 
@@ -18,14 +19,36 @@ class CreateCartItemTest(TestCase):
         CartItem.objects.all().delete()
 
     # Testando a adição de um produto ao carrinho
-    def test_add_simple_cartitem_ok(self):
-        response = self.client.get(self.url)
-        redirect_url = reverse('checkout:cart_item')
-        self.assertRedirects(response, redirect_url)
-        self.assertEqual(CartItem.objects.count(), 1)
+    # def test_add_simple_cartitem_ok(self):
+    #     response = self.client.get(self.url)
+    #     redirect_url = reverse('checkout:cart_item')
+    #     self.assertRedirects(response, redirect_url)
+    #     self.assertEqual(CartItem.objects.count(), 1)
 
-    def test_add_complex_cartitem_ok(self):
+    # def test_add_complex_cartitem_ok(self):
+    #     response = self.client.get(self.url)
+    #     response = self.client.get(self.url)
+    #     cart_item = CartItem.objects.get()
+    #     self.assertEqual(cart_item.quantity, 2)
+
+
+class CheckouViewTestCase(TestCase):
+
+    def setUp(self):
+        self.user = mommy.prepare(settings.AUTH_USER_MODEL)
+        self.user.set_password('teste123xeba')
+        self.user.save()
+        self.cart_item = mommy.make(CartItem)
+        self.client = Client()
+        self.url = reverse('checkout:checkout')
+
+    def test_checkout_view(self):
         response = self.client.get(self.url)
+        redirect_url = '{}?next={}'.format(reverse(settings.LOGIN_URL), self.url)
+        self.assertRedirects(response, redirect_url)
+        # Logando o usuário em ambiente de testes
+        self.client.login(username=self.user.username, password='teste123xeba')
+        self.cart_item.cart_key = self.client.session.session_key
+        self.cart_item.save()
         response = self.client.get(self.url)
-        cart_item = CartItem.objects.get()
-        self.assertEqual(cart_item.quantity, 2)
+        self.assertTemplateUsed(response, 'checkout/checkout.html')
